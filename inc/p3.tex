@@ -8,7 +8,7 @@ Deklarieren Sie eine Attributliste f"ur das Elemente "`Catalog\_Structure"'.
 Diese Attributliste soll das Attribut "`type"' beinhalten, welches vom Typ Aufz"ahlung ist und die Werte "`root"', "`node"' oder "`leaf"' annehmen kann.
 Das Attribut soll als "`required"' definiert werden.\\
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ATTLIST Catalog_Structure type (root|node|leaf) #REQUIRED>
 \end{lstlisting}
@@ -16,7 +16,7 @@ Das Attribut soll als "`required"' definiert werden.\\
 \subsection{Aufgabe}
 F"ugen Sie dem Element BMECat ein weiteres Attribut namens "`note"' hinzu und deklarieren Sie es als optional.\\
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ELEMENT BMECat (Header,(T_New_Catalog,note)?)>
 \end{lstlisting}
@@ -28,13 +28,12 @@ Formulieren Sie eine Document Instance, die auf die DTD "`BMECat.dtd"' referenzi
 Es handelt sich um die Beschreibung des Katalogs "`Bademoden 2005"'.
 Der Katalog tr"agt die ID 200345 und liegt in deutscher Sprache in der Version 1.0 vor.
 
-\lstset{language=XML} % given DTD
+\lstset{style=customXML} % given DTD
 \begin{lstlisting}
 <!ELEMENT BMECat (Header, T_New_Catalog)>
 <!ATTLIST BMECat version CDATA #FIXED "1.2">
 <!ELEMENT Header (Catalog, Buyer, Supplier)>
-<!ELEMENT Catalog
-    (Language, Catalog_Id, Catalog_Version, (Catalog_Name)?, (Currency)?>
+<!ELEMENT Catalog (Language, Catalog_Id, Catalog_Version, (Catalog_Name)?, (Currency)?>
 <!ELEMENT Language (#PCDATA)>
 <!ELEMENT Catalog_Id (#PCDATA)>
 <!ELEMENT Catalog_Version (#PCDATA)>
@@ -42,11 +41,11 @@ Der Katalog tr"agt die ID 200345 und liegt in deutscher Sprache in der Version 1
 <!ELEMENT Currency (#PCDATA)>
 \end{lstlisting}
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!DOCTYPE BMECat "BMECat.dtd">
-<? xml version='1.2' encoding="UTF-8"?>
-<BMECat version='1.0'>
+<? xml version='1.0' encoding="UTF-8"?>
+<BMECat version='1.2'>
     <Header>
         <Catalog>
             <Language>deutsch</Language>
@@ -63,7 +62,7 @@ Der Katalog tr"agt die ID 200345 und liegt in deutscher Sprache in der Version 1
 \subsection{Aufgabe}
 Aufgrund welcher Fehler ist das folgende XML-Dokument nicht wohlgeformt?
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE order SYSTEM "order.dtd">
@@ -81,8 +80,9 @@ Aufgrund welcher Fehler ist das folgende XML-Dokument nicht wohlgeformt?
 \end{lstlisting}
 
 Korrigiertes XML:
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE order "order.dtd">
 <order Id="234">
     <item>
@@ -108,28 +108,25 @@ Der Entwurf einer entsprechenden Document Type Definition (DTD) f"ur die zuk"unf
 Die Elementtypen Ansprechpartner und Land sollen optional deklariert werden.
 Auspr"agungen des Elementtyps Rechnungsposition k"onnen in einer Dokument-Instanz ein oder mehrmals vorkommen.\\
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ELEMENT Kunde (Kundennummer, Firmenname, (Ansprechpartner)?, Adresse)>
-<!ELEMENT Rechnungsdaten (Rechnungsnummer, Rechnungsdatum,
-    (Rechnungsposition)*, Nettogesamtbetrag,
-    Mehrwertsteuer, Bruttogesamtbetrag)>
+<!ELEMENT Rechnungsdaten (Rechnungsnummer, Rechnungsdatum, (Rechnungsposition)*, Nettogesamtbetrag, Mehrwertsteuer, Bruttogesamtbetrag)>
 \end{lstlisting}
 
 \subsubsection{Aufgabe b)}
 Deklarieren Sie bitte ein Element vom Typ Bankverbindung mit Zeichendaten als Inhalt und ordnen Sie es an passender Stelle in das Inhaltsmodell der DTD ein.\\
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ELEMENT Bankverbindung (#PCDATA)>
-<!ELEMENT Kunde (Kundennummer, Firmenname, (Ansprechpartner)?,
-    Adresse, Bankverbindung)>
+<!ELEMENT Kunde (Kundennummer, Firmenname, (Ansprechpartner)?, Adresse, Bankverbindung)>
 \end{lstlisting}
 
 \subsubsection{Aufgabe c)}
 Da die Bankverbindungen f"ur einen l"angeren Zeitraum konstant bleibt, schlagen Sie vor, ein Entity vom Typ BV mit dem Inhalt "`Innova AG, Kto-Nr. 1234567, BLZ 76959191, Stadtsparkasse Nuernberg"' in der DTD zu deklarieren.
 Bitte formulieren Sie die Entsprechende Entitytypdeklaration.\\
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ELEMENT BV (#PCDATA)>
 \end{lstlisting}
@@ -141,11 +138,10 @@ Definieren Sie bitte die erforderlichen Attribute und ordnen Sie diese dem Wurze
 Das Attribut Bearbeiter ist als \#REQUIRED zu deklarieren.
 Das Attribut Bearbeitungsstatus kann die Werte "`ungeprueft"', "`geprueft"', oder "`freigegeben"' annehmen un dhat standardm"a"sig den Wert "`ungeprueft"'.
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
 <!ATTLIST Rechnung Bearbeiter CDATA #REQUIRED>
-<!ATTLIST Rechnung Bearbeitungsstatus
-    ("ungeprueft"|"geprueft"|"freigegeben") "ungeprueft">
+<!ATTLIST Rechnung Bearbeitungsstatus ("ungeprueft"|"geprueft"|"freigegeben") #FIXED "ungeprueft">
 \end{lstlisting}
 
 \subsection{Aufgabe}
@@ -162,10 +158,9 @@ Da dieser meistens gleich ist, soll f"ur den Inhalt ein Entity mit dem Inhalt 'T
 Da nicht jeder Artikel sowohl online als auch offline verf"ugbar sein soll, wird ein entsprechendes Attribut ben"otigt (z.B. "`type"'), das den Inhalt "`web"', "`print"' oder "`multichannel"' haben kann.
 Dieses Attribut ist nicht optional."'\\
 
-\lstset{language=XML}
+\lstset{style=customXML}
 \begin{lstlisting}
-<!ELEMENT Artikel (Ueberschrift, Textkoerper,
-        Autor, Erstellungsdatum, Copyright)>
+<!ELEMENT Artikel (Ueberschrift, Textkoerper, Autor, Erstellungsdatum, Copyright)>
     <!ELEMENT Ueberschrift (PCDATA)>
     <!ELEMENT Textkoerper ((Absatz)+)>
         <!ELEMENT Absatz (PCDATA)>
@@ -175,7 +170,7 @@ Dieses Attribut ist nicht optional."'\\
         <!ELEMENT Titel (PCDATA)>
     <!ELEMENT Erstellungsdatum (PCDATA)>
     <!ELEMENT Copyright (PCDATA)>
-    <!ATTLIST Artiel type ('web'|'print'|'multichannel' #REQUIRED)
+    <!ATTLIST Artikel type ('web'|'print'|'multichannel' #REQUIRED)>
 \end{lstlisting}
 
 

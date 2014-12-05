@@ -8,8 +8,8 @@
 
 \subsubsection{Klausuraufgabe 1b}
 
-\lstset{language=SQL}
-\begin{lstlisting}[frame=L]
+\lstset{style=customSQL}
+\begin{lstlisting}
 
 SELECT  BestellNr, Auslieferdatum, Name
 FROM    Bestellung AS b
@@ -22,8 +22,8 @@ WHERE   b.Bezahlt = 0
 
 \subsubsection{Klausuraufgabe 2a}
 
-\lstset{language=SQL,numbers=left,numberstyle=\tiny}
-\begin{lstlisting}[frame=L]
+\lstset{style=customSQL}
+\begin{lstlisting}
 SELECT      g.Bezeichnung AS Gemuese
             , COUNT(*) AS Anzahl
 FROM        Patient AS p
@@ -37,8 +37,8 @@ GROUP BY    g.GemueseID
 
 \subsubsection{Klausuraufgabe 2b}
 
-\lstset{language=SQL}
-\begin{lstlisting}[frame=L]
+\lstset{style=customSQL}
+\begin{lstlisting}
 INSERT INTO ESSEN (PatientenID, GemueseID, Datum)
 VALUES  (
     (
