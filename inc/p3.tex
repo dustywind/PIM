@@ -1,0 +1,249 @@
+
+
+\section{Document Type Definitions (DTD)}
+
+
+\subsection{Aufgabe}
+Deklarieren Sie eine Attributliste f"ur das Elemente "`Catalog\_Structure"'.
+Diese Attributliste soll das Attribut "`type"' beinhalten, welches vom Typ Aufz"ahlung ist und die Werte "`root"', "`node"' oder "`leaf"' annehmen kann.
+Das Attribut soll als "`required"' definiert werden.\\
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ATTLIST Catalog_Structure type (root|node|leaf) #REQUIRED>
+\end{lstlisting}
+
+\subsection{Aufgabe}
+F"ugen Sie dem Element BMECat ein weiteres Attribut namens "`note"' hinzu und deklarieren Sie es als optional.\\
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ELEMENT BMECat (Header,(T_New_Catalog,note)?)>
+\end{lstlisting}
+
+
+\subsection{Aufgabe}
+
+Formulieren Sie eine Document Instance, die auf die DTD "`BMECat.dtd"' referenziert und folgende Inhalte Abbildet:\\
+Es handelt sich um die Beschreibung des Katalogs "`Bademoden 2005"'.
+Der Katalog tr"agt die ID 200345 und liegt in deutscher Sprache in der Version 1.0 vor.
+
+\lstset{language=XML} % given DTD
+\begin{lstlisting}
+<!ELEMENT BMECat (Header, T_New_Catalog)>
+<!ATTLIST BMECat version CDATA #FIXED "1.2">
+<!ELEMENT Header (Catalog, Buyer, Supplier)>
+<!ELEMENT Catalog
+    (Language, Catalog_Id, Catalog_Version, (Catalog_Name)?, (Currency)?>
+<!ELEMENT Language (#PCDATA)>
+<!ELEMENT Catalog_Id (#PCDATA)>
+<!ELEMENT Catalog_Version (#PCDATA)>
+<!ELEMENT Catalog_Name (#PCDATA)>
+<!ELEMENT Currency (#PCDATA)>
+\end{lstlisting}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!DOCTYPE BMECat "BMECat.dtd">
+<? xml version='1.2' encoding="UTF-8"?>
+<BMECat version='1.0'>
+    <Header>
+        <Catalog>
+            <Language>deutsch</Language>
+            <Catalog_Id>200345</Catalog_Id>
+            <Catalog_Version>1.0</Catalog_Version>
+        </Catalog>
+    </Header>
+</BMECat>
+\end{lstlisting}
+
+
+
+
+\subsection{Aufgabe}
+Aufgrund welcher Fehler ist das folgende XML-Dokument nicht wohlgeformt?
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE order SYSTEM "order.dtd">
+<order Id="234">
+    <item>
+        <title>XML and Java</title>
+        <price currency="EUR">100.0</price>
+        <quantity>1
+    </item>
+    <cardinfo>
+        <name>Your Name<name/>
+        <expiration>04/2002</expiration>
+        <number></cardinfo>5283830462320010</number>
+</order>
+\end{lstlisting}
+
+Korrigiertes XML:
+\lstset{language=XML}
+\begin{lstlisting}
+<!DOCTYPE order "order.dtd">
+<order Id="234">
+    <item>
+        <title>XML and Java</title>
+        <price currency="EUR">100.0</price>
+        <quantity>1</quantity>
+    </item>
+    <cardinfo>
+        <name>Your Name</name>
+        <expiration>04/2002</expiration>
+        <number>5283830462320010</number>
+    </cardinfo>
+</order>
+\end{lstlisting}
+
+
+\subsection{Aufgabe}
+
+Die Innova AG beabsichtigt, den Austausch von Rechnungsdaten mit ihren Kundne per XML abzuwickeln.
+Der Entwurf einer entsprechenden Document Type Definition (DTD) f"ur die zuk"unftigen Rechnungsformulare ist bereits vorhanden:
+
+\subsubsection{Aufgabe a)}
+Die Elementtypen Ansprechpartner und Land sollen optional deklariert werden.
+Auspr"agungen des Elementtyps Rechnungsposition k"onnen in einer Dokument-Instanz ein oder mehrmals vorkommen.\\
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ELEMENT Kunde (Kundennummer, Firmenname, (Ansprechpartner)?, Adresse)>
+<!ELEMENT Rechnungsdaten (Rechnungsnummer, Rechnungsdatum,
+    (Rechnungsposition)*, Nettogesamtbetrag,
+    Mehrwertsteuer, Bruttogesamtbetrag)>
+\end{lstlisting}
+
+\subsubsection{Aufgabe b)}
+Deklarieren Sie bitte ein Element vom Typ Bankverbindung mit Zeichendaten als Inhalt und ordnen Sie es an passender Stelle in das Inhaltsmodell der DTD ein.\\
+\lstset{language=XML}
+\begin{lstlisting}
+<!ELEMENT Bankverbindung (#PCDATA)>
+<!ELEMENT Kunde (Kundennummer, Firmenname, (Ansprechpartner)?,
+    Adresse, Bankverbindung)>
+\end{lstlisting}
+
+\subsubsection{Aufgabe c)}
+Da die Bankverbindungen f"ur einen l"angeren Zeitraum konstant bleibt, schlagen Sie vor, ein Entity vom Typ BV mit dem Inhalt "`Innova AG, Kto-Nr. 1234567, BLZ 76959191, Stadtsparkasse Nuernberg"' in der DTD zu deklarieren.
+Bitte formulieren Sie die Entsprechende Entitytypdeklaration.\\
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ELEMENT BV (#PCDATA)>
+\end{lstlisting}
+
+\subsubsection{Aufgabe d)}
+F"ur jede Rechnung sollen jeweils Bearbeiter und Bearbeitungsstatus zugeordnet werden k"onnen.
+Dies kann durch Einf"uhrung von entsprechenden Attributen realisiert werden.
+Definieren Sie bitte die erforderlichen Attribute und ordnen Sie diese dem Wurzelelement des Dokuments zu.
+Das Attribut Bearbeiter ist als \#REQUIRED zu deklarieren.
+Das Attribut Bearbeitungsstatus kann die Werte "`ungeprueft"', "`geprueft"', oder "`freigegeben"' annehmen un dhat standardm"a"sig den Wert "`ungeprueft"'.
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ATTLIST Rechnung Bearbeiter CDATA #REQUIRED>
+<!ATTLIST Rechnung Bearbeitungsstatus
+    ("ungeprueft"|"geprueft"|"freigegeben") "ungeprueft">
+\end{lstlisting}
+
+\subsection{Aufgabe}
+Ein bekannter N"urnberger Jugendsachbuchverlag m"ochte seinen content mehrfach nutzen (Web und Print). 
+Sie empfehlen dem Verlag, die Inhalte medienunabh"angig in XML-Dokumenten abzulegen.
+Eine DTD beschreibt die Struktur von XML-Dokumentinstanzen.
+Bitte erstellen Sie mithilfe der folgenden Angaben eine DTD zur Strukturierung eines mehrfach nutzbaren Artikels:\\
+
+"`Jeder Artikel hat eine "Uberschrift, einen Textk"orper, einen Autor und ein Erstellungsdatum.
+Der Autor hat immer einen Vor- und einen Nachnamen, optional kann ein akademischer Titel angegeben werden.
+Der Textk"orper besteht aus mindestens einem Absatz.
+Jeder Artikel enth"alt auch einen Copyrightvermerk.
+Da dieser meistens gleich ist, soll f"ur den Inhalt ein Entity mit dem Inhalt 'Tossleff Jugendsachbuch AG' vordefiniert werden.
+Da nicht jeder Artikel sowohl online als auch offline verf"ugbar sein soll, wird ein entsprechendes Attribut ben"otigt (z.B. "`type"'), das den Inhalt "`web"', "`print"' oder "`multichannel"' haben kann.
+Dieses Attribut ist nicht optional."'\\
+
+\lstset{language=XML}
+\begin{lstlisting}
+<!ELEMENT Artikel (Ueberschrift, Textkoerper,
+        Autor, Erstellungsdatum, Copyright)>
+    <!ELEMENT Ueberschrift (PCDATA)>
+    <!ELEMENT Textkoerper ((Absatz)+)>
+        <!ELEMENT Absatz (PCDATA)>
+    <!ELEMENT Autor ((Vorname)+, (Nachname)+, (Titel)?)>
+        <!ELEMENT Vorname (PCDATA)>
+        <!ELEMENT Nachname (PCDATA)>
+        <!ELEMENT Titel (PCDATA)>
+    <!ELEMENT Erstellungsdatum (PCDATA)>
+    <!ELEMENT Copyright (PCDATA)>
+    <!ATTLIST Artiel type ('web'|'print'|'multichannel' #REQUIRED)
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

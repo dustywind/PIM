@@ -1,0 +1,67 @@
+
+\section{Praxisteil 2}
+
+\subsection{SQL}
+
+\subsubsection{Klausuraufgabe 1a}
+\textbf{\#\#\# TODO \#\#\#}
+
+\subsubsection{Klausuraufgabe 1b}
+
+\lstset{language=SQL}
+\begin{lstlisting}[frame=L]
+
+SELECT  BestellNr, Auslieferdatum, Name
+FROM    Bestellung AS b
+        JOIN Kunde AS k ON b.KundenNr = k.KundenNr
+WHERE   b.Bezahlt = 0
+;
+
+\end{lstlisting}
+
+
+\subsubsection{Klausuraufgabe 2a}
+
+\lstset{language=SQL,numbers=left,numberstyle=\tiny}
+\begin{lstlisting}[frame=L]
+SELECT      g.Bezeichnung AS Gemuese
+            , COUNT(*) AS Anzahl
+FROM        Patient AS p
+            JOIN ESSEN AS e ON p.ID = e.PatientenID
+            JOIN Gemuese g ON g.ID = e.GemueseID
+WHERE       p.Schweregrad = 'schwer'
+GROUP BY    g.GemueseID
+;
+
+\end{lstlisting}
+
+\subsubsection{Klausuraufgabe 2b}
+
+\lstset{language=SQL}
+\begin{lstlisting}[frame=L]
+INSERT INTO ESSEN (PatientenID, GemueseID, Datum)
+VALUES  (
+    (
+        SELECT  ID
+        FROM    Patient
+        WHERE   Vorname = 'Mathilda'
+                AND Name = 'Natter'
+    )
+    ,
+    (
+        SELECT  ID
+        FROM    Gemuese
+        WHERE   Bezeichnung = 'Sprossen'
+    )
+    '2.06.2011')
+;
+\end{lstlisting}
+
+
+\subsection{Datawarehouse}
+\textbf{\#\#\# TODO \#\#\#}
+
+
+
+
+
