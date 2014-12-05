@@ -1,7 +1,6 @@
 
 \section{PIM\_01\_Praxisteil}
 
-
 \subsection{Prozesse und Informationen}
 
 \subsubsection{p1 Aufgabe S. 4}
@@ -38,68 +37,59 @@ Modellieren Sie auch die im Text angegebenen Attribute und erg"anzen Sie, wo not
 
 \includegraphics[scale=0.5]{./inc/p1_umlaufgabe}
 
-
 \subsubsection{p1 Aufgabe S.24}
 Ein wesentlicher Aspekt der relationalen Datenmodellierung ist die so genannte Normalisierung.\\
+\noindent
 a) Erl"autern Sie bitte, welches Ziel mit der Normalisierung verfolgt wird.
 Welcher Pahse des Modellierungsprozesses ist die Normalisierung zuzuordnen?\\
 
+\begin{quote}
 Um der L"osch-, Einf"uge- und "Anderungs-Anomalie entgegen zu wirken m"ussen Tabellen normalisiert werden.
 Das bedeutet, dass alle Redundanzen entfernt werden m"ussen.\\
-Die Normalisierung l"asst sich der Feindatenmodellierung zuordnen.\\
+Die Normalisierung l"asst sich der Feindatenmodellierung zuordnen.
+\end{quote}
 
+\noindent
 b) Nennen und begr"unden Sie bitte, in welcher Normalform sich die folgende Tabelle befindet.\\
 
+\begin{quote}
 Die Tabelle "`Studenten\_zu\_Pr"ufungen"' ist in der \textbf{ersten Normalform}.
-Sie ist in der ersten Normalform weil \textbf{jede Eigenschaft nur einen Eigenschaftswert} enth"alt.
-Die Tabelle ist jedoch nicht in der zweiten Normalform, da Nicht-Schl"usselattribute abh"angig von einer echten Teilmenge der Schl"usselkandidaten ist.\\
+Sie ist in der ersten Normalform weil \textbf{jede Eigenschaft nur einen Eigenschaftswert} enth"alt.\\
+Die Tabelle ist jedoch nicht in der zweiten Normalform, da Nicht-Schl"usselattribute abh"angig von einer echten Teilmenge der Schl"usselkandidaten ist.
+\end{quote}
 
+\noindent
 c) "Uberf"uhren Sie die Tabelle aus Teilaufgabe b) bitte in die n"achsth"ohere Normalform.\\
 
 
-\begin{tabular}{ | l | l | }
+\rowcolors{1}{LightGray}{White}
+\begin{tabular}{ l l }
     \hline
-    Matrikelnummer  & Studentname \\\hline
-    111111          & M"uller\\\hline
-    333333          & Schmidt\\\hline
+    \rowcolor{LightSlateGrey}
+    \textbf{Matrikelnummer} & \textbf{Studentname} \\
+    111111                  & M"uller\\
+    333333                  & Schmidt\\
 \end{tabular}
 
+\vspace{1cm}
 
-
-\begin{tabular}{| l | l |}
+\begin{tabular}{ l l }
     \hline
-    Pr"ufungsnummer & Pr"ufungsname\\\hline
-    6144            & Prozess- und Informationsmanagement\\\hline
-    2377            & E-Procurement\\\hline
+    \rowcolor{LightSlateGrey}
+    \textbf{Pr"ufungsnummer}    & \textbf{Pr"ufungsname}\\
+    6144                        & Prozess- und Informationsmanagement\\
+    2377                        & E-Procurement\\
 \end{tabular}
 
+\vspace{1cm}
 
-\begin{tabular}{| l | l | l |}
+\begin{tabular}{ l l l }
     \hline
-    Matrikelnummer  & Pr"ufungsnummer   & Note\\\hline
-    111111          & 6144              & 1,0\\\hline
-    111111          & 2377              & 1,3\\\hline
-    333333          & 6144              & 2,0\\\hline
+    \rowcolor{LightSlateGrey}
+    \textbf{Matrikelnummer} & \textbf{Pr"ufungsnummer}  & \textbf{Note}\\
+    111111                  & 6144                      & 1,0\\
+    111111                  & 2377                      & 1,3\\
+    333333                  & 6144                      & 2,0\\
 \end{tabular}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

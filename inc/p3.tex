@@ -101,7 +101,7 @@ Korrigiertes XML:
 
 \subsection{Aufgabe}
 
-Die Innova AG beabsichtigt, den Austausch von Rechnungsdaten mit ihren Kundne per XML abzuwickeln.
+Die Innova AG beabsichtigt, den Austausch von Rechnungsdaten mit ihren Kunden per XML abzuwickeln.
 Der Entwurf einer entsprechenden Document Type Definition (DTD) f"ur die zuk"unftigen Rechnungsformulare ist bereits vorhanden:
 
 \subsubsection{Aufgabe a)}
@@ -161,23 +161,17 @@ Dieses Attribut ist nicht optional."'\\
 \lstset{style=customXML}
 \begin{lstlisting}
 <!ELEMENT Artikel (Ueberschrift, Textkoerper, Autor, Erstellungsdatum, Copyright)>
-    <!ELEMENT Ueberschrift (PCDATA)>
+    <!ELEMENT Ueberschrift (#PCDATA)>
     <!ELEMENT Textkoerper ((Absatz)+)>
-        <!ELEMENT Absatz (PCDATA)>
-    <!ELEMENT Autor ((Vorname)+, (Nachname)+, (Titel)?)>
-        <!ELEMENT Vorname (PCDATA)>
-        <!ELEMENT Nachname (PCDATA)>
-        <!ELEMENT Titel (PCDATA)>
-    <!ELEMENT Erstellungsdatum (PCDATA)>
-    <!ELEMENT Copyright (PCDATA)>
+        <!ELEMENT Absatz (#PCDATA)>
+    <!ELEMENT Autor ((Vorname), (Nachname), (Titel)?)>
+        <!ELEMENT Vorname (#PCDATA)>
+        <!ELEMENT Nachname (#PCDATA)>
+        <!ELEMENT Titel (#PCDATA)>
+    <!ELEMENT Erstellungsdatum (#PCDATA)>
+    <!ENTITY Copyright "Tossleff Jugendsachbuch AG">
     <!ATTLIST Artikel type ('web'|'print'|'multichannel' #REQUIRED)>
 \end{lstlisting}
-
-
-
-
-
-
 
 
 
