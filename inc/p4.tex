@@ -1,8 +1,42 @@
 
 
+\chapter{PIM Praxisteil 04}
+
 \section{XQuery}
 
-\subsection{Aufgabe}
+\subsection{p4 Aufgabe S. 3}
+
+Der Online Sportschuhversand Punidas24 verwaltet seinen Produktkatalog mithilfe von XML.
+Nachfolgend ist ein Ausschnitt aus dem Produktkatalog dargestellt.\\
+
+\lstset{style=customXML}
+\begin{lstlisting}
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE Sportschuhkatalog SYSTEM 'Sportschuhkatalog.dtd'>
+<Sportschugkatalog>
+    <Sportschuh>
+        <ID>345633</ID>
+        <Modell Kategorie='Damen'>Speedy33</Modell>
+        <Hersteller>Puma</Puma>
+        <Beschreibung>Speedy33 ist aus Glattleder gefertigt.</Beschreibung>
+        <Basisfarbe>gruen</Basisfarbe>
+        <Preis>88,90</Preise>
+    </Sportschuh>
+    <Sportschuh>
+        <ID>419984</ID>
+        <Modell Kategorie='Herren'>Absolut55</Modell>
+        <Hersteller>Adidas</Hersteller>
+        <Basisfarbe>rot</Basisfarbe>
+        <Preise>49,90</Preise>
+    </Sportschuh>
+</Sportschuhkatalog>
+\end{lstlisting}
+
+\noindent
+Die Marktforschungsabteilung von Pumidas24 prognostiziert eine steigende Nachfrage nach gr"unen Sportschuhen f"ur die n"achsten Monate.
+Pumidas24 m"ochte daher seinen Bestand an gr"unen Sportschuhen erh"ohen.
+Bitte formlulieren Sie mithilfe von XQuery eine Abfrage, die aus dem Produktkatalog alle Identifikationsnummern (ID) von gr"unen Sportschuhen selektiert.
+Bitte beachten Sie, dass der Produktkatalog in einer Datei namens "`Sportkatalog.xml"' gespeichert ist.\\
 
 \lstset{language=PHP}
 \begin{lstlisting}
@@ -13,22 +47,171 @@ where $schuh/Basisfarbe = "rot"
 return $schuh/ID
 \end{lstlisting} %$ // correct the syntaxhighlithing within vim
 
+\section{Content Management Systeme (CMS)}
 
-\subsection{Aufgabe}
+\subsection{p4. Aufgabe S. 5}
+Das Online-Sport-Portal Live.de m"ochte einen kostenpflichtigen Premium-Bereich schaffen, in dem Seiten mit Sportnachrichten zur Verf"ugung gestellt werden.
+Abh"angig vom Interessenprofil der Mitglieder sollen Berichte zu Ereignissen verschiedener Sportarten indiviudalisiert werden.\\
 
-\textbf{\#\#\# TODO \#\#\#}\\
-// Layoutorientierte vs. contentorientierte Verfahren zur Erstellung von Medienprodukten
+\noindent
+$a)$ Bitte erl"autern Sie die Unterschiede zwischen dem \textbf{Layoutorientierten} und dem \textbf{Contentorientierten} Verfahren zur Erstellung von Medienprodukten.
+Begr"unden Sie bitte, welches Verfahren sie Live.de empfehlen w"urden.\\
 
-\subsection{Aufgabe}
+\begin{quote}
+    Beim \textbf{layoutorientierten} Verfahren einigt man sich auf ein bestimmtes Layout, welches anschliessend nicht mehr ver"andert wird.
+    Stattdessen wird jeder neue Beitrag (Content) an dieses Layout angepasst.\\
+    Das \textbf{contentorientierte} Verfahren hingegen passt das Layout dem Content an.\\
 
-\textbf{\#\#\# TODO \#\#\#}\\
-// Precision + Recall von Suchmaschinen
+    \noindent
+    F"ur Webseiten wie Live.de ist das contentorientierte Verfahren besser geeignet.
+\end{quote}
 
 
-\subsection{Aufgabe}
 
-\textbf{\#\#\# TODO \#\#\#}\\
-// Precision + Recall von Suchmaschinen
+
+\noindent
+$b)$ Bitte zeigen Sie die Unterschiede zwischen der \textbf{statischen} und \textbf{dynamischen} erzeugung von Webseiten auf.
+Welches Verfahren ist f"ur Live.de besser geeignet?
+Bitte begr"unden Sie ihre Antwort.\\
+\begin{quote}
+    W"ahrend bei statischen Webseiten der Inhalt immer gleich ist, bis ihn der Webmaster ver"andert, k"onnen dynamische Webseiten  mit dem Benutzer interagieren.\\
+    Das bedeutet, dass z.B. auf Suchanfragen des Nutzers oder auf seine Eingaben vom Webserver reagiert wird.\\
+
+    \noindent
+    Da auf Live.de individualisierte Inhalte dargestellt werden sollen ist unbedingt einem dynamisches Verfahren anzuwenden.
+\end{quote}
+
+
+
+\section{Dokumentenretrieval}
+
+\subsection{p4 Aufgabe S. 8}
+
+In der Jobb"orse job24 befinden sich 40 Praktikumspl"atze im Bereich Wirtschaftsinformatik und 60 Praktikumspl"atze im Bereich Informatik.
+Die Suchanfrage "`Praktikum Wirtschaftsinformatik"' liefert 30 Praktikumspl"atze, von denen jedoch 10 nicht relevant sind.
+Bitte berechnen Sie die \textbf{Precision} und \textbf{Recal} der Suchmaschine.\\
+
+\begin{quote}
+    $Precision = N_{relgef} \div N_{gef} = 20 \div 30 = \frac{2}{3}$\\
+    $Recall = N_{relgef} \div N_{relgesamt} = 20 \div 60 = \frac{1}{3}$\\
+
+    {\tiny $N_{rel}$ = Anzahl der relevanten Ergebnisse}\\
+    {\tiny $N_{gef}$ = Anzahl der gefundenen Ergebnisse}
+\end{quote}
+
+
+\subsection{p4 Aufgabe S. 10}
+Die Gesch"aftskunden der Arbeitsvermittlungsagentur job4u bem"angeln, dass die webbasierte Stichwortsuche nach geeigneten Bewerbern l"angst nicht alle relevante Kandedaten zutate f"ordert.\\
+
+\noindent
+$a)$ Bitte erl"autern Sie den \textbf{Unterschied zwischen Recall und Precision}.
+Gehen sie hierbei auch auf den Zusammenhang zwischen diesen beiden Gr"o"sen ein.\\
+
+\begin{quote}
+    \textbf{Precision} ist das Ma"s f"ur den Anteil der relevanten gefundenen Dokumente an den insgesamt gefundenen Dokumenten.\\
+    $Precision = N_{relgef} \div N_{gef}$\\
+
+    \textbf{Recall} ist das Ma"s f"ur die relevanten Dokumente, die gefunden werden, im Verh"altnis zu allen (gefundenen und nicht gefundenen) relevanten Dokumenten.\\
+    $Recall = N_{relgef} \div N_{rel}$\\
+
+
+    \textbf{\#\#\# TODO \#\#\#\\Zusammenhang zwischen Precision + Recall}\\
+    \textbf{Vermutung:}\\
+    Die Verbesserung des Recalls geht immer zu lasten der Precision und vice versa.
+
+\end{quote}
+
+\noindent
+$b)$ Welche dieser beiden Gr"o"sen muss beim Online-Portal von Job4u verbessert werden?\\
+\begin{quote}
+    Es muss die Gr"o"se "`Recall"' verbessert werden.
+\end{quote}
+
+\noindent
+$c)$ Bitte nennen und erl"autern Sie einen Retrieval-Ansatz Ihrer Wahl, der dem beim job4u identifizierten Problem entgegenwirklt.\\
+\begin{quote}
+    Es sollte ein Text-Retrieval-Ansatz verfolgt werden.\\
+    Dabei ist beispielsweise die Fuzzy-Suche zu empfehlen.
+    Fuzzy-Suche bedeutet, dass das Suchkriterium nicht zu $100\%$ mit dem Ergebnis "ubereinstimmen muss, sondern leicht davon abweichen darf.\\
+    In der Praxis hat dies den Vorteil, dass die Suche nach "`Informatik"' auch Ergebnisse aus der Menge der "`Wirtschaftsinformatiker"' und "`BWL mit Schwerpunkt Informatik"' liefert. Dadurch werden mehr relevante Eintr"age gefunden.
+\end{quote}
+
+
+\subsection{p4 Aufgabe S. 12}
+Sie sind mit dem Aufbau einer Wissensplattform f"ur eine Anwaltskanzlei betraut.
+An die neu entwickelte Suchmaschine wird die Suchanfrage "`\textbf{erg"anzung zum aktiengesetz im jahre 2002}"' gesendet.
+Es wurden bereits "uber  10.000 Dokumente in das Repository der Suchmaschine aufgenommen.
+Unter anderem befinden sich darin die Dokumente $A$, $B$, und $C$ mit den folgenden Worth"aufigkeiten:\\
+
+\noindent
+$A$: bundestag ($2\times$), 2002 ($3\times$), aufsichtsrat ($4\times$), aktiengesetz ($1\times$), gr"undung ($2\times$)\\
+$B$: gesetzgeber ($1\times$), gesch"aftspolitik ($1\times$), erg"anzung ($2\times$), aktiengesetz ($4\times$)\\
+$C$: 2002 ($1\times$), rechnungslegung ($3\times$), aktiengesetz ($1\times$), erg"anzung ($1\times$), konzern ($2\times$)\\
+
+\noindent
+Um Suchergebnisse nach ihrer Relevanz zu sortieren, werden Ranking-Algorithmen wie "`Simple Match"' oder "`Weighted Match"' eingesetzt.\\
+
+\noindent
+In welcher Reihenfolge pr"asentiert die Suchmaschine die dokumente $A$, $B$, und $C$, wenn der Simple-Match-Algorithmus eingesetzt wird?
+Bitte geben Sie die resultierende Gewichtung der Dokumente mit an.\\
+
+\rowcolors{1}{LightGray}{White}
+\begin{tabular}{ l l l l l l }
+    \rowcolor{LightSlateGrey}
+    \textbf{lex} & \textbf{erg"anzung} & \textbf{aktiengesetz} & \textbf{jahr} & \textbf{2002} & \textbf{Gewicht}\\
+    ret     & 1 & 1 & 1 & 1 & 4\\
+    docA    & 0 & 1 & 0 & 1 & 2\\
+    docB    & 1 & 1 & 0 & 0 & 2\\
+    docC    & 1 & 1 & 0 & 1 & 3\\
+\end{tabular}
+
+\bigskip
+\noindent
+Reihenfolge:\\
+$\Rightarrow$ docC, docB, docA\\
+
+\subsection{p4 Aufgabe S. 15}
+Das Polizeipr"asidium Mittelfranken verf"ugt neuerdings "uber ein hochmodernes Bildretrievalsystem zur Recherche in der Verbrecherkartei.
+Die indexierten Digitalaufnahmen und eingescannten Fotografien stehen den Beamten f"ur Muster- und Metasuchanfragen zur Verf"ugung.\\
+
+\noindent
+Erl"autern Sie bitte den Unterschied zwischen Muster- und Metasuche.
+Nennen Sie je zwei Beispiele f"ur entsprechende Suchmerkmale bei einer Bildrecherche zum Retrieval von Gesichtern.
+
+\begin{quote}
+\end{quote}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
