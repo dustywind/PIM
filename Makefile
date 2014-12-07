@@ -8,4 +8,4 @@ clean: ; $(RM) ./*.aux ./*.log ./*.out ./*.toc ./inc/*.aux
 
 loesung: loesung.tex ; $(TEX) loesung.tex ;
 
-cpy: loesung ; $(CPY) ./loesung.pdf /media/data/Dropbox/AktuellesSemester/PIM/loesung_uebung.pdf
+cpy: loesung ; $(CPY) ./loesung.pdf /media/data/Dropbox/AktuellesSemester/PIM/loesung_praxis.pdf
