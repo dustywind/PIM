@@ -4,7 +4,7 @@ RM=rm -vR
 
 all: loesung cpy
 
-clean: ; $(RM) ./*.aux ./*.log ./*.out ./*.toc ./inc/*.aux 
+clean: ; $(RM) ./*.aux ./*.log ./*.out ./*.toc ./inc/p*/*.aux 
 
 loesung: loesung.tex ; $(TEX) loesung.tex ;
 

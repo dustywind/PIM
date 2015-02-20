@@ -1,3 +1,4 @@
 
+all: ; make -C ../.. all
 
-all: ; make -C ..
+clean: ; make -C ../../ clean
